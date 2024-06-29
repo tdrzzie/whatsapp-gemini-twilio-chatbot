@@ -81,10 +81,10 @@ def bot():
         message = ' '.join(incoming_msg.split()[1:])
 
         # Combine the bot identity, conversation history, and the new message
-        combined_message = f"{bot_identity}{conversation_history}\nUser: {incoming_msg}\n"
+        combined_message = f"{bot_identity}{conversation_history}\nUser: {message}\n"
 
         # Get the response.
-        response = command_handler.handle_command(first_word, bot_identity+message)
+        response = command_handler.handle_command(first_word, bot_identity+combined_message)
 
         # Update the conversation history with the bot's response
         update_conversation(user_id, f"Nyasha: {response}")
