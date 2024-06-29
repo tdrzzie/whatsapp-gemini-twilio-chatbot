@@ -28,12 +28,19 @@ def bot():
 
         # Extract the first word.
         first_word = str(incoming_msg.split()[0]).lower()
+        #hard coded gemini
+        # first_word = "gemini"
+
+        #bot identity hardcoded
+        bot_identity = "Your name is Nyasha a model designed by ABC Bank, a bot for ABC Bank. Your job is to assist clients. You are to reply 'Sorry I do not get your question' if the below question is not related to the bank question. "
+        bot_identity += "You are to answer the client if their question has something to do with banking services. Under any circumstances you are not to tell the client that you are gemini. "
+        bot_identity += "Now respond to the below below\n\n"
 
         # Message of the user.
         message = ' '.join(incoming_msg.split()[1:])
 
         # Get the response.
-        response = command_handler.handle_command(first_word, message)
+        response = command_handler.handle_command(first_word, bot_identity+message)
 
         # Prepare & return the response back to WhatsApp.
         resp = MessagingResponse()
@@ -47,4 +54,4 @@ def bot():
         return str(MessagingResponse().message("Sorry, an error occurred while processing your request."))
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
