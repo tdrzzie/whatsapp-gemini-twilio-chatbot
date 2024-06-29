@@ -86,6 +86,11 @@ def bot():
         # Get the response.
         response = command_handler.handle_command(first_word, bot_identity+combined_message)
 
+        # If the response starts with "Dzvambu: ", remove this prefix for the user's response
+        clean_response = response
+        if response.startswith("Dzvambu: "):
+            clean_response = response[len("Dzvambu: "):]
+
         # Update the conversation history with the bot's response
         update_conversation(user_id, f"Dzvambu: {response}")
 
@@ -93,7 +98,7 @@ def bot():
         # Prepare & return the response back to WhatsApp.
         resp = MessagingResponse()
         msg = resp.message()
-        msg.body(response)
+        msg.body(clean_response)
         return str(resp)
 
     # Handle any errors.

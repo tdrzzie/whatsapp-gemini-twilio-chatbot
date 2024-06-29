@@ -56,7 +56,6 @@ class CommandHandler:
         """
         handler = self.commands.get(command, self.handle_default)
         try:
-            ongoing_chat = 1
             return handler(message)
         except Exception as e:
             # Log and handle any error that occurs during command handling.
