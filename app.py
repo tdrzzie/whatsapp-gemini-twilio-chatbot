@@ -87,7 +87,7 @@ def bot():
         response = command_handler.handle_command(first_word, bot_identity+combined_message)
 
         # Update the conversation history with the bot's response
-        update_conversation(user_id, f"Nyasha: {response}")
+        update_conversation(user_id, f"Dzvambu: {response}")
 
 
         # Prepare & return the response back to WhatsApp.
